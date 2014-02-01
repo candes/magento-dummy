@@ -1,0 +1,5 @@
+/media/catalog
+/media/downloadable
+/var/cache/*
+/var/locks/*
+/var/session/*
