@@ -395,66 +395,6 @@
         "homepage": "https://github.com/theseer/fDOMDocument"
     },
     {
-        "name": "theseer/phpdox",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/theseer/phpdox.git",
-            "reference": "6ca052717b878f3e49be90f678c4fd90bd314676"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/theseer/phpdox/zipball/6ca052717b878f3e49be90f678c4fd90bd314676",
-            "reference": "6ca052717b878f3e49be90f678c4fd90bd314676",
-            "shasum": ""
-        },
-        "require": {
-            "ext-dom": "*",
-            "ext-fileinfo": "*",
-            "ext-iconv": "*",
-            "ext-mbstring": "*",
-            "ext-tokenizer": "*",
-            "ext-xsl": "*",
-            "nikic/php-parser": ">=0.9.4",
-            "php": ">=5.3.3",
-            "phpunit/php-timer": ">=1.0.4",
-            "theseer/directoryscanner": ">=1.2.1",
-            "theseer/fdomdocument": ">=1.4.1",
-            "theseer/fxsl": ">=1.0",
-            "zetacomponents/base": ">=1.8.0",
-            "zetacomponents/console-tools": ">=1.6.0"
-        },
-        "time": "2014-01-26 13:10:09",
-        "bin": [
-            "composer/bin/phpdox"
-        ],
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "0.5.x-dev"
-            }
-        },
-        "installation-source": "source",
-        "autoload": {
-            "classmap": [
-                "src/"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "BSD-3-Clause"
-        ],
-        "authors": [
-            {
-                "name": "Arne Blankerts",
-                "email": "arne@blankerts.de",
-                "role": "Developer"
-            }
-        ],
-        "description": "A fast Documentation generator for PHP Code using standard technology (SRC, DOCBLOCK, XML and XSLT) with event based processing"
-    },
-    {
         "name": "psr/log",
         "version": "1.0.0",
         "version_normalized": "1.0.0.0",
@@ -4355,5 +4295,65 @@
             "task",
             "tool"
         ]
+    },
+    {
+        "name": "theseer/phpdox",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/theseer/phpdox.git",
+            "reference": "6ca052717b878f3e49be90f678c4fd90bd314676"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/theseer/phpdox/zipball/6ca052717b878f3e49be90f678c4fd90bd314676",
+            "reference": "6ca052717b878f3e49be90f678c4fd90bd314676",
+            "shasum": ""
+        },
+        "require": {
+            "ext-dom": "*",
+            "ext-fileinfo": "*",
+            "ext-iconv": "*",
+            "ext-mbstring": "*",
+            "ext-tokenizer": "*",
+            "ext-xsl": "*",
+            "nikic/php-parser": ">=0.9.4",
+            "php": ">=5.3.3",
+            "phpunit/php-timer": ">=1.0.4",
+            "theseer/directoryscanner": ">=1.2.1",
+            "theseer/fdomdocument": ">=1.4.1",
+            "theseer/fxsl": ">=1.0",
+            "zetacomponents/base": ">=1.8.0",
+            "zetacomponents/console-tools": ">=1.6.0"
+        },
+        "time": "2014-01-26 13:10:09",
+        "bin": [
+            "composer/bin/phpdox"
+        ],
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "0.5.x-dev"
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "classmap": [
+                "src/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Arne Blankerts",
+                "email": "arne@blankerts.de",
+                "role": "Developer"
+            }
+        ],
+        "description": "A fast Documentation generator for PHP Code using standard technology (SRC, DOCBLOCK, XML and XSLT) with event based processing"
     }
 ]
