@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <phpdox xmlns="http://phpdox.de/config">
   <project name="Example" source="${basedir}/app" workdir="${basedir}/build/api/xml">
-    <collector backend="parser" />
+    <!-- <collector backend="parser" /> -->
+    <collector publiconly="false">
+            <include mask="*.php" />
+            <exclude mask="*Autoload.php" />
+    </collector>
     <generator output="${basedir}/build/api">
-      <build engine="html" output="html"/>
+      <!-- <build engine="html" output="html"/> -->
+      <build engine="html" enabled="true" output="api"/>
     </generator>
   </project>
 </phpdox>
