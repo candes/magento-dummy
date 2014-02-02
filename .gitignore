@@ -1,5 +1,8 @@
+.DS_Store
 /media/catalog
 /media/downloadable
 /var/cache/*
 /var/locks/*
 /var/session/*
+/var/report/*
+/var/log/*
