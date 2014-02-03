@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="name-of-project" default="build" basedir=".">
+<project name="Magento" default="build" basedir=".">
+
  <target name="build"
    depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpdox,phpunit,phpcb"/>
 
@@ -135,8 +136,8 @@
  	<mkdir dir="./build" />
  	<mkdir dir="./generatedJUnitFiles" />
  	
- 	<chown file="./build" user="jenkins.jenkins" />
- 	<chown file="./generatedJUnitFiles" user="jenkins.jenkins" />
+ 	<chown file="./build" user="tomcat.tomcat" />
+ 	<chown file="./generatedJUnitFiles" user="tomcat.tomcat" />
  </target>
  
 </project>
