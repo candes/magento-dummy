@@ -2,14 +2,14 @@
 
 <project name="Magento" default="build" basedir=".">
 
- <target name="build"
-   depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpdox,phpunit,phpcb"/>
+ <!-- <target name="build" depends="prepare,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpdox,phpunit,phpcb"/> -->
+ <target name="build" depends="prepare,lint,phploc,phpmd-ci,phpcs-ci,phpcpd,phpdox,phpunit,phpcb"/>
 
- <target name="build-parallel"
-   depends="prepare,lint,tools-parallel,phpunit,phpcb"/>
+ <!-- <target name="build-parallel" depends="prepare,lint,tools-parallel,phpunit,phpcb"/> -->
+ <target name="build-parallel" depends="lint,tools-parallel,phpunit,phpcb"/>
 
  <target name="tools-parallel" description="Run tools in parallel">
-  <parallel threadCount="2">
+  <parallel threadCount="1">
    <sequential>
     <antcall target="pdepend"/>
     <antcall target="phpmd-ci"/>
@@ -42,7 +42,7 @@
   <apply executable="php" checkreturn="1">
    <arg value="-l" />
 
-   <fileset dir="${project.basedir}/app">
+   <fileset dir="${project.basedir}/app/code">
     <include name="**/*.php" />
    </fileset>
 
@@ -56,7 +56,7 @@
   <exec executable="${project.basedir}/vendor/bin/phploc" logoutput="true">
    <arg value="--log-csv" />
    <arg value="${project.basedir}/build/logs/phploc.csv" />
-   <arg path="${project.basedir}/app" />
+   <arg path="${project.basedir}/app/code" />
   </exec>
  </target>
 
@@ -65,24 +65,30 @@
    <arg value="--jdepend-xml=${project.basedir}/build/logs/jdepend.xml" />
    <arg value="--jdepend-chart=${project.basedir}/build/pdepend/dependencies.svg" />
    <arg value="--overview-pyramid=${project.basedir}/build/pdepend/overview-pyramid.svg" />
-   <arg path="${project.basedir}/app" />
+   <arg path="${project.basedir}/app/code" />
   </exec>
  </target>
 
  <target name="phpmd"
          description="Perform project mess detection using PHPMD and print human readable output. Intended for usage on the command line before committing.">
   <exec executable="${project.basedir}/vendor/bin/phpmd" logoutput="true">
-   <arg path="${project.basedir}/app" />
+   <arg path="${project.basedir}/app/code" />
    <arg value="text" />
    <arg value="${project.basedir}/phpmd.xml" />
+   <arg value="--exclude" />
+   <arg value="core" />
+   <arg value="--reportfile" />
+   <arg value="${project.basedir}/build/logs/pmd.txt" />
   </exec>
  </target>
 
  <target name="phpmd-ci" description="Perform project mess detection using PHPMD creating a log file for the continuous integration server">
   <exec executable="${project.basedir}/vendor/bin/phpmd" logoutput="true">
-   <arg path="${project.basedir}/app" />
+   <arg path="${project.basedir}/app/code" />
    <arg value="xml" />
    <arg value="${project.basedir}/phpmd.xml" />
+   <arg value="--exclude" />
+   <arg value="core" />
    <arg value="--reportfile" />
    <arg value="${project.basedir}/build/logs/pmd.xml" />
   </exec>
@@ -92,7 +98,8 @@
          description="Find coding standard violations using PHP_CodeSniffer and print human readable output. Intended for usage on the command line before committing.">
   <exec executable="${project.basedir}/vendor/bin/phpcs" logoutput="true">
    <arg value="--standard=${project.basedir}/phpcs.xml" />
-   <arg path="${project.basedir}/app" />
+   <arg value="--ignore=*/tests/*,*/core/*" />
+   <arg path="${project.basedir}/app/code" />
   </exec>
  </target>
 
@@ -101,7 +108,8 @@
    <arg value="--report=checkstyle" />
    <arg value="--report-file=${project.basedir}/build/logs/checkstyle.xml" />
    <arg value="--standard=${project.basedir}/phpcs.xml" />
-   <arg path="${project.basedir}/app" />
+   <arg value="--ignore=*/tests/*,*/core/*" />
+   <arg path="${project.basedir}/app/code" />
   </exec>
  </target>
 
@@ -109,7 +117,7 @@
   <exec executable="${project.basedir}/vendor/bin/phpcpd">
    <arg value="--log-pmd" />
    <arg value="${project.basedir}/build/logs/pmd-cpd.xml" />
-   <arg path="${project.basedir}/app" />
+   <arg path="${project.basedir}/app/code" />
   </exec>
  </target>
 
@@ -126,7 +134,7 @@
    <arg value="--log" />
    <arg path="${project.basedir}/build/logs" />
    <arg value="--source" />
-   <arg path="${project.basedir}/app" />
+   <arg path="${project.basedir}/app/code" />
    <arg value="--output" />
    <arg path="${project.basedir}/build/code-browser" />
   </exec>

@@ -13,6 +13,16 @@
     <!-- Import the entire unused code rule set -->
     <rule ref="rulesets/unusedcode.xml" />
 
+    <!-- Import the entire design code rule set -->
+    <rule ref="rulesets/design.xml" />
+
     <!-- Import the entire cyclomatic complexity rule -->
     <rule ref="rulesets/codesize.xml/CyclomaticComplexity" />
+
+    <!-- Import entire naming rule set and exclude rules -->
+    <rule ref="rulesets/naming.xml">
+        <exclude name="ShortVariable" />
+        <!-- <exclude name="LongVariable" /> -->
+    </rule>
+
 </ruleset>
